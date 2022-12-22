@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { WagmiConfig } from "wagmi";
-import { ethereumClient, wagmiClient } from "./web3/config";
+import { ethereumClient, projectId, wagmiClient } from "./web3/config";
 import { Web3Modal } from "@web3modal/react";
 
 const root = ReactDOM.createRoot(
@@ -17,7 +17,7 @@ root.render(
       <App />
     </WagmiConfig>
 
-    <Web3Modal projectId="<YOUR_PROJECT_ID>" ethereumClient={ethereumClient} />
+    <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
   </>
 );
 

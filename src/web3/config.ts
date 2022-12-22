@@ -16,10 +16,11 @@ import {
 } from "wagmi/chains";
 
 const chains = [arbitrum, mainnet, polygon, goerli, bscTestnet, polygonMumbai];
+export const projectId = "c4fdf397f2688b29380c8505b85b5d17";
 
 // Wagmi client
 const { provider } = configureChains(chains, [
-  walletConnectProvider({ projectId: "<YOUR_PROJECT_ID>" }),
+  walletConnectProvider({ projectId: projectId }),
 ]);
 export const wagmiClient = createClient({
   autoConnect: true,
