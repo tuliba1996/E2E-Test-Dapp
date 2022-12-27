@@ -5,6 +5,7 @@ import {
 } from "@web3modal/ethereum";
 
 import { configureChains, createClient } from "wagmi";
+import { SafeConnector } from "@gnosis.pm/safe-apps-wagmi";
 
 import {
   arbitrum,
@@ -24,7 +25,10 @@ const { provider } = configureChains(chains, [
 ]);
 export const wagmiClient = createClient({
   autoConnect: true,
-  connectors: modalConnectors({ appName: "web3Modal", chains }),
+  connectors: [
+    new SafeConnector({ chains }),
+    ...modalConnectors({ appName: "web3Modal", chains }),
+  ],
   provider,
 });
 

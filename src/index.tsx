@@ -7,15 +7,18 @@ import reportWebVitals from "./reportWebVitals";
 import { WagmiConfig } from "wagmi";
 import { ethereumClient, projectId, wagmiClient } from "./web3/config";
 import { Web3Modal } from "@web3modal/react";
+import SafeProvider from "@gnosis.pm/safe-apps-react-sdk";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <>
-    <WagmiConfig client={wagmiClient}>
-      <App />
-    </WagmiConfig>
+    <SafeProvider>
+      <WagmiConfig client={wagmiClient}>
+        <App />
+      </WagmiConfig>
+    </SafeProvider>
 
     <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
   </>

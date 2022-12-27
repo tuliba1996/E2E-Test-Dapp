@@ -11,10 +11,11 @@ import { SignMessage } from "./components/SignMessage";
 import { SignTypeData } from "./components/SignTypeData";
 import { SendForm } from "./components/SendForm";
 import dappImage from "./dapp.png";
+import { useAutoConnect } from "./web3/useAutoConnect";
 
 function App() {
   const { address, chain } = useController();
-
+  useAutoConnect();
   return (
     <div className="App">
       <main className="container-fluid">
