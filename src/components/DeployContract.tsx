@@ -1,10 +1,5 @@
-import {
-  usePrepareContractWrite,
-  useContractWrite,
-  useAccount,
-  useSigner,
-} from "wagmi";
-import React, { useEffect } from "react";
+import { useContractWrite, useSigner } from "wagmi";
+import React from "react";
 import abiFactory from "../web3/constants.json";
 import { ethers } from "ethers";
 

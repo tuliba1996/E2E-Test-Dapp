@@ -62,7 +62,7 @@ export const SendForm = () => {
 
   return (
     <>
-      <h4 className="card-title">Send form</h4>
+      <h4 className="card-title">Send Form</h4>
       <div className="form-group">
         <label>From</label>
         <input className="form-control" type="text" value={from} />

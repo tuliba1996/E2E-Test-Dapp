@@ -12,10 +12,15 @@ import { SignTypeData } from "./components/SignTypeData";
 import { SendForm } from "./components/SendForm";
 import dappImage from "./dapp.png";
 import { useAutoConnect } from "./web3/useAutoConnect";
+import { useAccount } from "wagmi";
+import { SendTokenWithContract } from "./components/SendTokenWithContract";
 
 function App() {
-  const { address, chain } = useController();
   useAutoConnect();
+  const { chain } = useController();
+
+  const { address, connector } = useAccount();
+
   return (
     <div className="App">
       <main className="container-fluid">
@@ -92,50 +97,55 @@ function App() {
         {/*  </div>*/}
         {/*</section>*/}
 
+        {connector?.id !== "safe" ? (
+          <section>
+            <div className="row">
+              <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+                <div className="card full-width">
+                  <div className="card-body">
+                    <h4 className="card-title">Froggy bank contract</h4>
+
+                    <DeployContract />
+
+                    <hr />
+                    <h4 className="card-title">Failing contract</h4>
+
+                    <FallingContract />
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+                <div className="card full-width">
+                  <div className="card-body">
+                    <h4 className="card-title">Send Tokens</h4>
+
+                    <CreateToken />
+                  </div>
+                </div>
+              </div>
+              <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+                <div className="card full-width">
+                  <div className="card-body">
+                    <h4 className="card-title">Collectibles</h4>
+
+                    <CollectiblesContract />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
+
         <section>
           <div className="row">
             <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
               <div className="card full-width">
                 <div className="card-body">
-                  <h4 className="card-title">Send Eth</h4>
-
                   <SendEth />
-                  <hr />
-                  <h4 className="card-title">Froggy bank contract</h4>
-
-                  <DeployContract />
-
-                  <hr />
-                  <h4 className="card-title">Failing contract</h4>
-
-                  <FallingContract />
                 </div>
               </div>
             </div>
-
-            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
-              <div className="card full-width">
-                <div className="card-body">
-                  <h4 className="card-title">Send Tokens</h4>
-
-                  <CreateToken />
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
-              <div className="card full-width">
-                <div className="card-body">
-                  <h4 className="card-title">Collectibles</h4>
-
-                  <CollectiblesContract />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div className="row">
             <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
               <div className="card full-width">
                 <div className="card-body">
@@ -153,11 +163,19 @@ function App() {
           </div>
         </section>
         <section>
-          <div className="row d-flex justify-content-center">
-            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
-              <div className="card">
+          <div className="row">
+            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+              <div className="card full-width">
                 <div className="card-body">
                   <SendForm />
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+              <div className="card full-width">
+                <div className="card-body">
+                  <h4 className="card-title">Send Token</h4>
+                  <SendTokenWithContract />
                 </div>
               </div>
             </div>

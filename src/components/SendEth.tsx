@@ -32,7 +32,7 @@ export const SendEth = () => {
       sendTransaction({
         recklesslySetUnpreparedRequest: {
           to: "0xC9BD16deEC88e32dd1433D959498fe0dd5d90a93",
-          value: ethers.utils.parseEther("0.1"),
+          value: ethers.utils.parseEther("0.01"),
           gasLimit: "0x5208",
           gasPrice: "28000",
           type: 0,
@@ -44,6 +44,7 @@ export const SendEth = () => {
 
   return (
     <>
+      <h4 className="card-title">Send Eth</h4>
       <button
         className="btn btn-primary btn-lg btn-block mb-3"
         disabled={!sendTransaction}

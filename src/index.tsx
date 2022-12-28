@@ -6,8 +6,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { WagmiConfig } from "wagmi";
 import { ethereumClient, projectId, wagmiClient } from "./web3/config";
-import { Web3Modal } from "@web3modal/react";
 import SafeProvider from "@gnosis.pm/safe-apps-react-sdk";
+import { Web3Modal } from "@web3modal/react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
